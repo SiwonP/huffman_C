@@ -6,4 +6,6 @@
 
 void count_frequences(FILE*, int*);
 
+int count_present_char(int*, int);
+
 #endif

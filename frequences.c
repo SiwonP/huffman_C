@@ -7,3 +7,13 @@ void count_frequences(FILE *file, int *tab){
     }
 }
 
+int count_present_char (int *tab, int size) {
+    int res = 0;
+        for (int i = 0; i < size; i++) {
+        if (tab[i] > 0) {
+            res++;
+        }
+    }
+
+    return res;
+}
