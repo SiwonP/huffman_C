@@ -10,6 +10,10 @@ struct Tree {
 };
 
 Tree *init_tree(int, char);
-void add_son(Tree*, char, int, int);
+
+void add_son(Tree*, Tree*, int);
+
 void destroy_tree(Tree*);
+
+void display_tree(Tree*);
 #endif
