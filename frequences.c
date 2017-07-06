@@ -1,5 +1,6 @@
 #include "frequences.h"
 #include "tree.h"
+#include "list.h"
 
 void count_frequences(FILE *file, int *tab){
     char c;
@@ -8,7 +9,8 @@ void count_frequences(FILE *file, int *tab){
     }
 }
 
-int count_present_char (int *tab, int size) {
+List *count_present_char (int *tab, int size) {
+    List *liste = initialisation();
     int res = 0;
     for (int i = 0; i < size; i++) {
         if (tab[i] > 0) {
@@ -16,7 +18,7 @@ int count_present_char (int *tab, int size) {
         }
     }
 
-    return res;
+    return liste;
 }
 
 Tree *build_tree(int *tab, int size) {
