@@ -1,6 +1,5 @@
 #include "frequences.h"
 #include "tree.h"
-#include "list.h"
 #include "character.h"
 
 void count_frequences(FILE *file, int *tab){
@@ -20,24 +19,23 @@ int count_present_char (int *tab, int size) {
     return res;
 }
 
-char *make_sorted_array(int *tab, int size) {
-    static char res[128] = {0};
+void make_sorted_array(int *tab, char *sorted, int size) {
 
     for (int i = 0; i < size; i++) {
-        res[i] = i;
+        sorted[i] = i;
     }
-    return res;
+    
+    insertion_sort(tab, sorted, size);
 }
 
 void insertion_sort(int *tab, char *sorted, int size) {
     char c;
     int j;
-    for (int i = 1; i < size; i++) {
+    int i;
+    for (i = 0; i < size; i++) {
         c = sorted[i];
-        j = i;
-        while (j > 0 && tab[sorted[i-1]] > tab[c]) {
+        for (j = i; j > 0 && tab[sorted[j-1]] > tab[c]; j--) {
             sorted[j] = sorted[j-1];
-            j = j-1;
         }
         sorted[j] = c;
     }
@@ -57,3 +55,4 @@ Tree *build_tree(int *tab, int size) {
 
     return node;
 } 
+
