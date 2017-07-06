@@ -16,9 +16,31 @@ int count_present_char (int *tab, int size) {
             res++;
         }
     }
-
     return res;
 }
+
+void make_sorted_array(int *tab, char *sorted, int size) {
+
+    for (int i = 0; i < size; i++) {
+        sorted[i] = i;
+    }
+    
+    insertion_sort(tab, sorted, size);
+}
+
+void insertion_sort(int *tab, char *sorted, int size) {
+    char c;
+    int j;
+    int i;
+    for (i = 0; i < size; i++) {
+        c = sorted[i];
+        for (j = i; j > 0 && tab[sorted[j-1]] > tab[c]; j--) {
+            sorted[j] = sorted[j-1];
+        }
+        sorted[j] = c;
+    }
+}
+    
 
 Tree *build_tree(int *tab, int size) {
     int min = 1;
@@ -33,3 +55,4 @@ Tree *build_tree(int *tab, int size) {
 
     return node;
 } 
+
