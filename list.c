@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
+#include "character.h"
 
 List *initialisation(void) {
     List *liste = (List*)malloc(sizeof(*liste));
+    liste->next = NULL;
 
     if ( liste == NULL ) {
         exit(EXIT_FAILURE);
