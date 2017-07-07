@@ -1,6 +1,5 @@
 #include "frequences.h"
 #include "tree.h"
-#include "character.h"
 
 void count_frequences(FILE *file, int *tab){
     char c;
