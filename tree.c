@@ -34,11 +34,11 @@ void display_tree(Tree *node) {
         return;
     }
     if (node->left != NULL) {
-        //display_tree(node->left);
+        display_tree(node->left);
     }
     printf("weight : %d\n", node->weight);
     if(node->right != NULL) {
-        //display_tree(node->right);
+        display_tree(node->right);
     }
         
 }

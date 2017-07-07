@@ -22,23 +22,14 @@ int main(int argc, char *argv[]) {
         //printf("%c : ", sort[j]);
         //printf("%d\n", tab[sort[j]]);
     }
-    Tree *node;
-    node = malloc(sizeof(Tree));
-    node->left = NULL;
-    node->right = NULL;
-    node->weight = 0;
-    node->el = 1;
+    Tree *node = init_tree(1,1);
+    Tree *l = init_tree(2,2);
 
-    Tree *l;
-    l = malloc(sizeof(Tree));
-    l->left = NULL;
-    l->right = NULL;
-    l->weight = 1;
-    l->el = 1;
-
+    add_son(node, l, 1);
+    
     display_tree(node);
-    destroy_tree(node);
 
+    destroy_tree(node);
     return 1;
 }
 
