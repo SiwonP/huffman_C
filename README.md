@@ -1,4 +1,4 @@
-# Huffman in c
+# Huffman in C
 
 Here is an implementation of the Huffman compression algorithm from scratch.
 
