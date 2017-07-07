@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 Tree *init_tree(int w, char e) {
-    Tree *node = (Tree*)malloc(sizeof(Tree*));
+    Tree *node = malloc(sizeof(Tree));
     node->el = e;
     node->weight = w;
     node->left = NULL;
@@ -30,11 +30,15 @@ void destroy_tree(Tree *node) {
 }
 
 void display_tree(Tree *node) {
-    while (node != NULL) {
-        printf("%c %d\n", node->el, node->weight);
-        printf("(");
-        display_tree(node->left);
-        display_tree(node->right);
-        printf(")");
+    if (node == NULL) {
+        return;
     }
+    if (node->left != NULL) {
+        //display_tree(node->left);
+    }
+    printf("weight : %d\n", node->weight);
+    if(node->right != NULL) {
+        //display_tree(node->right);
+    }
+        
 }
