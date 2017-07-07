@@ -40,5 +40,14 @@ void display_tree(Tree *node) {
     if(node->right != NULL) {
         display_tree(node->right);
     }
-        
+}
+
+Tree *merge_two_sons(Tree *leftSon, Tree *rightSon) {
+    int w;
+    w = leftSon->weight + rightSon->weight;
+    Tree *son = init_tree(w, -1);
+    son->left = leftSon;
+    son->right = rightSon;
+
+    return son;
 }

@@ -41,17 +41,14 @@ void insertion_sort(int *tab, char *sorted, int size) {
 }
     
 
-Tree *build_tree(int *tab, int size) {
-    int min = 1;
+Tree *build_tree(int *tab, int* sorted, int size) {
 
-    for (int i = 0; i < size; i++) {
-        if (tab[i] > 0 && tab[i] < min) {
-            min = tab[i];
-        }
-    }
+    Tree *rightSon = init_tree(tab[sorted[0]], sorted[0]);
+    Tree *leftSon = init_tree(tab[sorted[1]], sorted[1]);
 
-    Tree *node = init_tree(0,0);
+    Tree *init = merge_two_sons(leftSon, rightSon);
 
-    return node;
+    return init;
+
 } 
 

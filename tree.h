@@ -16,4 +16,6 @@ void add_son(Tree*, Tree*, int);
 void destroy_tree(Tree*);
 
 void display_tree(Tree*);
+
+Tree *merge_two_sons(Tree*, Tree*);
 #endif
