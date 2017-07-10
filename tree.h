@@ -18,8 +18,6 @@ struct TreeArray {
 
 Tree *init_tree(int, char);
 
-void add_son(Tree*, Tree*, int);
-
 void destroy_tree(Tree*);
 
 void display_tree(Tree*);

@@ -13,14 +13,6 @@ Tree *init_tree(int w, char e) {
     return node;
 }
 
-void add_son(Tree *father, Tree *son, int side) {
-    if (side < 0) {
-        father->left = son;
-    } else if (side > 0 ) {
-        father->right = son;
-    }
-
-}
 
 /*Destroy recursively all sons behind the node passed in argument
  * (ie the whole tree if the root is the argument)*/
