@@ -42,7 +42,7 @@ void display_tree(Tree *node) {
     }
     printf(", ");
     printf("\"weight\" : %d,", node->weight);
-    printf("\"char\" : %d", node->el);
+    printf("\"char\" : \"%c\"", node->el);
     printf(", ");
     printf("\"right\" : ");
     if(node->right != NULL) {
@@ -63,4 +63,14 @@ Tree *merge_two_sons(Tree *leftSon, Tree *rightSon) {
     return son;
 }
 
-
+void make_basic_nodes(Tree **nodes_storage, int *tab, int size) {
+    //Tree *nodes_storage[128];
+    int counter = 0;
+    for (int i = 0; i < size; i++) {
+        if (tab[i] > 0) {
+           Tree *tmp = init_tree(tab[i], i);
+           nodes_storage[counter] = tmp;
+           counter++;
+        }
+    }
+}

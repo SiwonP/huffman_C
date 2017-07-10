@@ -18,4 +18,6 @@ void destroy_tree(Tree*);
 void display_tree(Tree*);
 
 Tree *merge_two_sons(Tree*, Tree*);
+
+void make_basic_nodes(Tree**, int*, int);
 #endif
