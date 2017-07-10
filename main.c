@@ -22,13 +22,9 @@ int main(int argc, char *argv[]) {
         //printf("%c : ", sort[j]);
         //printf("%d\n", tab[sort[j]]);
     }
-    Tree *node = init_tree(1,1);
-    Tree *l = init_tree(2,2);
+    Tree *node = build_tree(tab,sort,128);
 
-    add_son(node, l, 1);
-    
     display_tree(node);
-
     destroy_tree(node);
     return 1;
 }
