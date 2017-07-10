@@ -43,16 +43,6 @@ void insertion_sort(int *tab, char *sorted, int size) {
 }
     
 
-Tree *build_tree(int *tab, char *sorted, int size) {
-
-    Tree *rightSon = init_tree(tab[sorted[0]], sorted[0]);
-    Tree *leftSon = init_tree(tab[sorted[1]], sorted[1]);
-
-    Tree *init = merge_two_sons(leftSon, rightSon);
-
-    return init;
-
-} 
 
 int find_minimum_weight(Tree **nodes_storage, int size) {
     int min = nodes_storage[0]->weight;

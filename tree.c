@@ -62,6 +62,8 @@ void make_basic_nodes(TreeArray *array, int *tab, int size) {
     }
 }
 
+/*Insert a node in the nodes array of the TreeArray nodes so that 
+ * the nodes array is sorted*/
 void insert_node(Tree *node, TreeArray *array) {
     int i;
     for (i = array->counter; i > 0 && (array->nodes[i-1]->weight < node->weight); i--) {
