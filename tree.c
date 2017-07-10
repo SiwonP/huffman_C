@@ -38,7 +38,7 @@ void display_tree(Tree *node) {
     }
     printf(", ");
     printf("\"weight\" : %d,", node->weight);
-    printf("\"char\" : \"%c\"", node->el);
+    printf("\"char\" : %d", node->el);
     printf(", ");
     printf("\"right\" : ");
     if(node->right != NULL) {
