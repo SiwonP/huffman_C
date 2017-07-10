@@ -9,6 +9,13 @@ struct Tree {
     Tree *right;
 };
 
+typedef struct TreeArray TreeArray;
+
+struct TreeArray {
+    int counter;
+    Tree *array[128];
+};
+
 Tree *init_tree(int, char);
 
 void add_son(Tree*, Tree*, int);
