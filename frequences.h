@@ -13,6 +13,6 @@ void make_sorted_array(int*, char*, int);
 
 void insertion_sort(int*, char*, int);
 
-Tree *build_tree(int*, int*, int);
+Tree *build_tree(int*, char*, int);
 
 #endif
