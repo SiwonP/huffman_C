@@ -37,6 +37,7 @@ int main(int argc, char *argv[]) {
         display_tree(nodes_storage[n]);
         destroy_tree(nodes_storage[n]);
     }
+    fclose(file);
     return 1;
 }
 

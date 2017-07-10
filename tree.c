@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*This function takes a weight w and a char e and return a tree leaf out of them*/
 Tree *init_tree(int w, char e) {
     Tree *node = malloc(sizeof(Tree));
     node->el = e;
@@ -21,6 +22,8 @@ void add_son(Tree *father, Tree *son, int side) {
 
 }
 
+/*Destroy recursively all sons behind the node passed in argument
+ * (ie the whole tree if the root is the argument)*/
 void destroy_tree(Tree *node) {
     if (node != NULL) {
         destroy_tree(node->left);
@@ -29,6 +32,7 @@ void destroy_tree(Tree *node) {
     }
 }
 
+/*Display the tree like a JSON -> Can be beautified to see a clearer display*/
 void display_tree(Tree *node) {
     if (node == NULL) {
         return;
@@ -63,8 +67,10 @@ Tree *merge_two_sons(Tree *leftSon, Tree *rightSon) {
     return son;
 }
 
+/*Takes a Tree* array and the initial array where are stored the
+ * occurences of the character in the file to compress and fill 
+ * the Tree array with tree leaves made out of the int array*/
 void make_basic_nodes(Tree **nodes_storage, int *tab, int size) {
-    //Tree *nodes_storage[128];
     int counter = 0;
     for (int i = 0; i < size; i++) {
         if (tab[i] > 0) {
