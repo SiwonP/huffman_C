@@ -49,26 +49,24 @@ void display_tree(Tree *node) {
     printf("}");
 }
 
-Tree *merge_two_sons(Tree *leftSon, Tree *rightSon) {
-    int w;
-    w = leftSon->weight + rightSon->weight;
-    Tree *son = init_tree(w, -1);
-    son->left = leftSon;
-    son->right = rightSon;
-
-    return son;
-}
 
 /*Takes a Tree* array and the initial array where are stored the
  * occurences of the character in the file to compress and fill 
  * the Tree array with tree leaves made out of the int array*/
-void make_basic_nodes(Tree **nodes_storage, int *tab, int size) {
-    int counter = 0;
+void make_basic_nodes(TreeArray *array, int *tab, int size) {
     for (int i = 0; i < size; i++) {
         if (tab[i] > 0) {
            Tree *tmp = init_tree(tab[i], i);
-           nodes_storage[counter] = tmp;
-           counter++;
+           insert_node(tmp, array);
         }
     }
+}
+
+void insert_node(Tree *node, TreeArray *array) {
+    int i;
+    for (i = array->counter; i > 0 && (array->nodes[i-1]->weight < node->weight); i--) {
+        array->nodes[i] = array->nodes[i-1];
+    }
+    array->nodes[i] = node;
+    array->counter++;
 }

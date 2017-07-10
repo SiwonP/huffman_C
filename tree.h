@@ -22,7 +22,7 @@ void destroy_tree(Tree*);
 
 void display_tree(Tree*);
 
-Tree *merge_two_sons(Tree*, Tree*);
+void make_basic_nodes(TreeArray*, int*, int);
 
-void make_basic_nodes(Tree**, int*, int);
+void insert_node(Tree*, TreeArray*);
 #endif
