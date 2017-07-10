@@ -22,10 +22,21 @@ int main(int argc, char *argv[]) {
         //printf("%c : ", sort[j]);
         //printf("%d\n", tab[sort[j]]);
     }
-    Tree *node = build_tree(tab,sort,128);
+    //Tree *node = build_tree(tab,sort,128);
 
-    display_tree(node);
-    destroy_tree(node);
+    //display_tree(node);
+    //destroy_tree(node);
+    
+
+    Tree *nodes_storage[128];
+    make_basic_nodes(nodes_storage, tab, 128);
+
+    int count = find_minimum_weight(nodes_storage, 128);
+    printf("%d\n", count);
+    for (int n = 0; n < 128; n++) {
+        display_tree(nodes_storage[n]);
+        destroy_tree(nodes_storage[n]);
+    }
     return 1;
 }
 
