@@ -33,13 +33,21 @@ void display_tree(Tree *node) {
     if (node == NULL) {
         return;
     }
+    printf("(");
     if (node->left != NULL) {
         display_tree(node->left);
+    } else {
+        printf("_");
     }
-    printf("weight : %d\n", node->weight);
+    printf(", ");
+    printf("weight : %d", node->weight);
+    printf(", ");
     if(node->right != NULL) {
         display_tree(node->right);
+    } else {
+        printf("_");
     }
+    printf(")");
 }
 
 Tree *merge_two_sons(Tree *leftSon, Tree *rightSon) {
