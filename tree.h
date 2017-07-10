@@ -13,7 +13,7 @@ typedef struct TreeArray TreeArray;
 
 struct TreeArray {
     int counter;
-    Tree *array[128];
+    Tree *nodes[128];
 };
 
 Tree *init_tree(int, char);
