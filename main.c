@@ -8,14 +8,10 @@ int main(int argc, char *argv[]) {
 
     count_frequences(file, tab);
 
-    TreeArray *array = malloc(sizeof(TreeArray));
-    make_basic_nodes(array, tab, 128);
-
-    for (int n = 0; n < 128; n++) {
-        display_tree(array->nodes[n]);
-        destroy_tree(array->nodes[n]);
+    for (int i = 0; i < 128; i++) {
+        printf("%d\n", tab[i]);
     }
-    fclose(file);
+
     return 1;
 }
 
