@@ -13,6 +13,15 @@ Tree *init_tree(int w, char e) {
     return node;
 }
 
+TreeArray *init_tree_array(void) {
+    TreeArray *array = malloc(sizeof(TreeArray));
+    array->counter = 0;
+    for (int i = 0; i < 128; i++) {
+        array->nodes[i] = NULL;
+    }
+    return array;
+}
+
 
 /*Destroy recursively all sons behind the node passed in argument
  * (ie the whole tree if the root is the argument)*/
@@ -57,7 +66,7 @@ void make_basic_nodes(TreeArray *array, int *tab, int size) {
     for (int i = 0; i < size; i++) {
         if (tab[i] > 0) {
            Tree *tmp = init_tree(tab[i], i);
-           //insert_node(tmp, array);
+           insert_node(tmp, array);
            array->nodes[i] = tmp;
         }
     }
@@ -68,7 +77,7 @@ void make_basic_nodes(TreeArray *array, int *tab, int size) {
 void insert_node(Tree *node, TreeArray *array) {
     int i;
     for (i = array->counter; i > 0 && (array->nodes[i-1]->weight < node->weight); i--) {
-        //array->nodes[i] = array->nodes[i-1];
+        array->nodes[i] = array->nodes[i-1];
     }
     array->nodes[i] = node;
     array->counter++;

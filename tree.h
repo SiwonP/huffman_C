@@ -25,4 +25,6 @@ void display_tree(Tree*);
 void make_basic_nodes(TreeArray*, int*, int);
 
 void insert_node(Tree*, TreeArray*);
+
+TreeArray *init_tree_array(void);
 #endif

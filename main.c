@@ -7,10 +7,9 @@ int main(int argc, char *argv[]) {
     int tab[128] = {0};
 
     count_frequences(file, tab);
+    TreeArray *array = init_tree_array();
 
-    for (int i = 0; i < 128; i++) {
-        printf("%d\n", tab[i]);
-    }
+    printf("%d", array->counter);
 
     return 1;
 }
