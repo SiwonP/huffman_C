@@ -15,4 +15,5 @@ void insertion_sort(int*, char*, int);
 
 Tree *build_tree(int*, char*, int);
 
+int find_minimum_weight(Tree**, int);
 #endif
