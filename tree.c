@@ -107,3 +107,4 @@ Tree *build_tree(int *tab, int size) {
     return tree;
 }
     
+
