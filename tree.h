@@ -6,6 +6,7 @@ struct Tree {
     char el;
     int weight;
     int code;
+    int bits;
     Tree *left;
     Tree *right;
 };
