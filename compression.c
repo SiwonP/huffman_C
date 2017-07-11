@@ -3,11 +3,12 @@
 #include "tree.h"
 #include "frequences.h"
 #include "compression.h"
+#include "dictionary.h"
 
 /*Write the huffman code in the corresponding nodes :
  * left branches are 0,
  * right branches are 1*/
-void encode(Tree *node, int codage, int level) {
+void encode(Tree *node, Entry *dic, int codage, int level) {
     if (node->left == NULL && node->right == NULL) {
         node->code = codage;
         node->bits = level;

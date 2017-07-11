@@ -1,6 +1,6 @@
 #ifndef COMPRESSION_H
 #define COMPRESSION_H
 
-void encode(Tree*, int, int);
+void encode(Tree*, Entry*, int, int);
 
 #endif 
