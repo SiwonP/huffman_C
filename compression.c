@@ -14,9 +14,9 @@ void encode(Tree *node, Entry *dic, int codage, int level) {
         node->bits = level;
     }
     if (node->left != NULL) {
-        encode(node->left, codage<<1, level+1);
+        encode(node->left, dic, codage<<1, level+1);
     }
     if (node->right != NULL) {
-        encode(node->right, (codage<<1)+1, level+1);
+        encode(node->right, dic, (codage<<1)+1, level+1);
     }
 }

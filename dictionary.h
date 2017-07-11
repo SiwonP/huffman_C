@@ -3,9 +3,9 @@
 
 typedef struct Entry Entry;
 
-struct Entry {
+struct Entry{
     int code;
     unsigned int bits;
-}
+};
 
 #endif
