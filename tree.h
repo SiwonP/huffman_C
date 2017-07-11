@@ -5,6 +5,7 @@ typedef struct Tree Tree;
 struct Tree {
     char el;
     int weight;
+    int code;
     Tree *left;
     Tree *right;
 };
