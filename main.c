@@ -7,18 +7,11 @@ int main(int argc, char *argv[]) {
     int tab[128] = {0};
 
     count_frequences(file, tab);
-    TreeArray *array = init_tree_array();
 
-    make_basic_nodes(array, tab, 128);
+    Tree *tree = build_tree(tab, 128);
 
-    printf("%d", array->counter);
-
-    int i = 0;
-    while(array->nodes[i] != NULL) {
-        display_tree(array->nodes[i]);
-        i++;
-    }
-
+    display_tree(tree);
+    destroy_tree(tree);
     return 1;
 }
 

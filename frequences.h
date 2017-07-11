@@ -7,13 +7,4 @@
 
 void count_frequences(FILE*, int*);
 
-int count_present_char(int*, int);
-
-void make_sorted_array(int*, char*, int);
-
-void insertion_sort(int*, char*, int);
-
-Tree *build_tree(int*, char*, int);
-
-int find_minimum_weight(Tree**, int);
 #endif

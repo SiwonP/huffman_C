@@ -82,3 +82,28 @@ void insert_node(Tree *node, TreeArray *array) {
     array->nodes[i] = node;
     array->counter++;
 }
+
+/*Return the tree whose weight is the lightest of all
+ * the trees in the nodes array of the TreeArray in question*/
+Tree *pick_node(TreeArray *array) {
+    array->counter --;
+    return array->nodes[array->counter];
+}
+
+/*Build the huffman tree*/
+Tree *build_tree(int *tab, int size) {
+    TreeArray *array = init_tree_array();
+    make_basic_nodes(array, tab, size);
+    Tree *tree;
+
+    while (array->counter > 1) {
+        Tree *node = malloc(sizeof(Tree));
+        node->left = pick_node(array);
+        node->right = pick_node(array);
+        node->weight = node->left->weight + node->right->weight;
+        insert_node(node, array);
+    }
+    tree = pick_node(array);
+    return tree;
+}
+    
