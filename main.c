@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     count_frequences(file, tab);
 
     Tree *tree = build_tree(tab, 128);
-    encode(tree, dic, 0,0);
+    store_code(tree, dic, 0,0);
 
     display_tree(tree);
     destroy_tree(tree);

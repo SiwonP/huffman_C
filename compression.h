@@ -3,6 +3,6 @@
 
 #include "dictionary.h"
 
-void encode(Tree*, Entry*, int, int);
+void store_code(Tree*, Entry*, int, int);
 
 #endif 
