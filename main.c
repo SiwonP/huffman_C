@@ -5,17 +5,11 @@
 #include "dictionary.h"
 
 int main(int argc, char *argv[]) {
-    FILE *file = fopen(argv[1], "r");
-    int tab[128] = {0};
-    Entry *dic[128];
+    char out[] = "huf";
 
-    count_frequences(file, tab);
+    compress(argv[1], out);
 
-    Tree *tree = build_tree(tab, 128);
-    store_code(tree, dic, 0,0);
-
-    display_tree(tree);
-    destroy_tree(tree);
+    
     return 1;
 }
 
