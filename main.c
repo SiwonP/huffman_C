@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]) {
     FILE *file = fopen(argv[1], "r");
     int tab[128] = {0};
-    Entry dic[128];
+    Entry *dic[128];
 
     count_frequences(file, tab);
 
