@@ -57,6 +57,14 @@ void encode(FILE *file, FILE *output, Entry **dic) {
     int bufferSize = 0;
     int c;
 
+    for (int i = 0; i < 128; i++) {
+        fputc(dic[i]->code, output);
+    }
+
+    char delimiter = 32;
+
+    fputc(delimiter, output);
+
     while((c = fgetc(file)) != EOF) {
         buffer = buffer<<dic[c]->bits;
         buffer = buffer|dic[c]->code;
