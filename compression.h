@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "dictionary.h"
 
-Entry **store_code(Tree*, int, int);
+void store_code(Tree*, Entry**, int, int);
 
 void encode(FILE*, FILE*, Entry**);
 

@@ -4,16 +4,15 @@
 #include "frequences.h"
 #include "compression.h"
 #include "dictionary.h"
+#include "decompression.h"
 
 int main(int argc, char *argv[]) {
     if (!strcmp("-c", argv[1])) {
-
-        printf("compressing ...");
+        printf("compressing ...\n");
         compress(argv[2], argv[3]);
         printf("done");
     } else if (!strcmp("-d", argv[1])){
-        printf("decompress");
-
+        decompress(argv[2], argv[3]);
     } else {
         printf("help");
     }

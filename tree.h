@@ -3,7 +3,7 @@
 typedef struct Tree Tree;
 
 struct Tree {
-    char el;
+    int el;
     int weight;
     int code;
     int bits;

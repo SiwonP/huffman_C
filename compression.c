@@ -9,32 +9,31 @@ void compress(char *inputName, char *outputName) {
     FILE *input = fopen(inputName, "r");
     FILE *output = fopen(outputName, "w");
     int tab[128] = {0};
-    Entry **dic;
+    Entry *dic[128];
 
     count_frequences(input, tab);
-    printf("frequences counted\n");
 
     Tree *tree = build_tree(tab, 128);
-    printf("tree built\n");
-    dic = store_code(tree, 0, 0);
-    printf("code stored\n");
+    store_code(tree, dic, 0, 0);
 
     rewind(input);
-    printf("cursor at position 0\n");
 
     encode(input, output, dic);
-    printf("compressed in %s\n", outputName);
+
+    fclose(input);
+    fclose(output);
 }
-    
+
 
 /*Write the huffman code in the corresponding nodes :
  * left branches are 0,
  * right branches are 1*/
-Entry **store_code(Tree *node, int codage, int level) {
-    static Entry *dic[128];
-    for (int i = 0; i < 128; i++) {
-        Entry *entry = malloc(sizeof(Entry));
-        dic[i] = entry;
+void store_code(Tree *node, Entry **dic, int codage, int level) {
+    if (!level) {
+        for (int i = 0; i < 128; i++) {
+            Entry *entry = malloc(sizeof(Entry));
+            dic[i] = entry;
+        }
     }
     if (node->left == NULL && node->right == NULL) {
         node->code = codage;
@@ -43,12 +42,11 @@ Entry **store_code(Tree *node, int codage, int level) {
         dic[node->el]->bits = level;
     }
     if (node->left != NULL) {
-        store_code(node->left, codage<<1, level+1);
+        store_code(node->left, dic, codage<<1, level+1);
     }
     if (node->right != NULL) {
-        store_code(node->right, (codage<<1)+1, level+1);
+        store_code(node->right, dic, (codage<<1)+1, level+1);
     }
-    return dic;
 }
 
 void encode(FILE *file, FILE *output, Entry **dic) {
@@ -58,13 +56,15 @@ void encode(FILE *file, FILE *output, Entry **dic) {
     int c;
 
     for (int i = 0; i < 128; i++) {
-        fputc(dic[i]->code, output);
+
+        if (dic[i]->code > 0) {
+            fputc(dic[i]->code, output);
+        }
     }
 
-    char delimiter = 32;
+    int delimiter = 2;
 
     fputc(delimiter, output);
-
     while((c = fgetc(file)) != EOF) {
         buffer = buffer<<dic[c]->bits;
         buffer = buffer|dic[c]->code;
