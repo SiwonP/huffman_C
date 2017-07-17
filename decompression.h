@@ -3,4 +3,6 @@
 
 void decompress(char*, char*);
 
+void read_frequences(FILE*, int*);
+
 #endif
