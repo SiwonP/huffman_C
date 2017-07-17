@@ -14,6 +14,11 @@ void compress(char *inputName, char *outputName) {
     count_frequences(input, tab);
 
     Tree *tree = build_tree(tab, 128);
+    display_tree(tree);
+    for (int i = 0; i < 128; i++) {
+        Entry *entry = malloc(sizeof(Entry));
+        dic[i] = entry;
+    }
     store_code(tree, dic, 0, 0);
 
     rewind(input);
@@ -29,12 +34,6 @@ void compress(char *inputName, char *outputName) {
  * left branches are 0,
  * right branches are 1*/
 void store_code(Tree *node, Entry **dic, int codage, int level) {
-    if (!level) {
-        for (int i = 0; i < 128; i++) {
-            Entry *entry = malloc(sizeof(Entry));
-            dic[i] = entry;
-        }
-    }
     if (node->left == NULL && node->right == NULL) {
         node->code = codage;
         node->bits = level;
