@@ -29,9 +29,11 @@ void decompress(char *inputName, char *outputName) {
     
     while ((c = fgetc(input)) != EOF) {
         if (c == 2) {
-            printf("true\n");
+            //printf("true\n");
+            printf("%d\n", c);
         } else {
-            printf("false\n");
+             printf("%d\n", c);
+             //printf("false\n");
         }
     }
 

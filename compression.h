@@ -6,7 +6,7 @@
 
 void store_code(Tree*, Entry**, int, int);
 
-void encode(FILE*, FILE*, Entry**);
+void encode(FILE*, FILE*, int* tab, Entry**);
 
 void compress(char*, char*);
 #endif 

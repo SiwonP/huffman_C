@@ -22,7 +22,7 @@ void compress(char *inputName, char *outputName) {
 
     rewind(input);
 
-    encode(input, output, dic);
+    encode(input, output, tab, dic);
 
     fclose(input);
     fclose(output);
@@ -47,7 +47,7 @@ void store_code(Tree *node, Entry **dic, int codage, int level) {
     }
 }
 
-void encode(FILE *file, FILE *output, Entry **dic) {
+void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
     unsigned int buffer = 0;
     unsigned char code = 0;
     int bufferSize = 0;
@@ -55,15 +55,18 @@ void encode(FILE *file, FILE *output, Entry **dic) {
 
     for (int i = 0; i < 128; i++) {
 
-        if (dic[i]->code > 0) {
-            printf("%d\n", dic[i]->code);
-            fputc(dic[i]->code, output);
+        if (tab[i] > 0) {
+            printf("%d : %d\n",i, tab[i]);
+            //fputc(dic[i]->code, output);
+            fwrite(&i, 1, 1, output);
+            fwrite(&tab[i], 1, 1, output);
         }
     }
 
     char delimiter = 2; 
     
-    fputc(delimiter, output);
+    fwrite(&delimiter, 1, 1, output);
+    //fputc(delimiter, output);
     /*
     while((c = fgetc(file)) != EOF) {
         buffer = buffer<<dic[c]->bits;
