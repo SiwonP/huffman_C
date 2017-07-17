@@ -10,9 +10,9 @@ void decompress(char *inputName, char *outputName) {
     FILE *input = fopen(inputName, "r");
     FILE *output = fopen(outputName, "w");
 
-    char c = fgetc(input);
-    for (int i = 0 ; i < 10; i++) {
-        printf("%c", c);
-        c = fgetc(input);
+    char c;
+
+    while ((c = fgetc(input)) != 2) {
+        printf("salut");
     }
 }
