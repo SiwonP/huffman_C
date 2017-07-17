@@ -14,7 +14,6 @@ void compress(char *inputName, char *outputName) {
     count_frequences(input, tab);
 
     Tree *tree = build_tree(tab, 128);
-    display_tree(tree);
     for (int i = 0; i < 128; i++) {
         Entry *entry = malloc(sizeof(Entry));
         dic[i] = entry;
@@ -57,13 +56,15 @@ void encode(FILE *file, FILE *output, Entry **dic) {
     for (int i = 0; i < 128; i++) {
 
         if (dic[i]->code > 0) {
+            printf("%d\n", dic[i]->code);
             fputc(dic[i]->code, output);
         }
     }
 
-    int delimiter = 2;
-
+    char delimiter = 2; 
+    
     fputc(delimiter, output);
+    /*
     while((c = fgetc(file)) != EOF) {
         buffer = buffer<<dic[c]->bits;
         buffer = buffer|dic[c]->code;
@@ -75,5 +76,6 @@ void encode(FILE *file, FILE *output, Entry **dic) {
             fputc(code, output);
         }
     }
+    */
 }
 
