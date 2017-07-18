@@ -56,7 +56,7 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
     for (int i = 0; i < 128; i++) {
 
         if (tab[i] > 0) {
-            printf("%d : %d\n",i, tab[i]);
+            //printf("%d : %d\n",i, tab[i]);
             //fputc(dic[i]->code, output);
             fwrite(&i, 1, 1, output);
             fwrite(&tab[i], 1, 1, output);
@@ -67,7 +67,6 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
     
     fwrite(&delimiter, 1, 1, output);
     //fputc(delimiter, output);
-    /*
     while((c = fgetc(file)) != EOF) {
         buffer = buffer<<dic[c]->bits;
         buffer = buffer|dic[c]->code;
@@ -79,6 +78,5 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
             fputc(code, output);
         }
     }
-    */
 }
 

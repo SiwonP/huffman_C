@@ -17,14 +17,8 @@ void decompress(char *inputName, char *outputName) {
     int tab[128] = {0};
     read_frequences(input, tab);
 
-    for (int i = 0; i < 128; i++) {
-
-        //printf("%c : ", i);
-        //printf("%d\n", tab[i]);
-    }
-
     tree = build_tree(tab, 128);
-    
+
     for (int i = 0; i < 128; i++) {
         Entry *entry = malloc(sizeof(Entry));
         dic[i] = entry;
@@ -39,12 +33,16 @@ void read_frequences(FILE *input, int *tab) {
     int c = 0;
     unsigned char i;
 
+    fread(&c, 1, 1, input);
+    fread(&i, 1, 1, input);
+
     while (c != 2) {
+        printf("%d : %d\n", c, i);
+
+        tab[c] = i;
         fread(&c, 1, 1, input);
         fread(&i, 1, 1, input);
-
-        if (c != 2) {
-            tab[c] = i;
-        }
     }
+
+    tab[2] = 0;
 }
