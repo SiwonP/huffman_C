@@ -55,5 +55,5 @@ Same tree equals the possibilty of reusing the function `store_code` which give 
 ## Installation
 
 ```
-git clone https://github.com/SiwonP/huffman_C && make
+git clone https://github.com/SiwonP/huffman_C && cd huffman_c && make
 ```
