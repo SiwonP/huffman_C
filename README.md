@@ -53,3 +53,7 @@ Since I have the same `tab`, I make a new identical tree out of it with the same
 Same tree equals the possibilty of reusing the function `store_code` which give me the code used to compress the file.
 
 ## Installation
+
+```
+git clone https://github.com/SiwonP/huffman_C && make
+```
