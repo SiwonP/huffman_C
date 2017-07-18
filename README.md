@@ -57,3 +57,17 @@ Same tree equals the possibilty of reusing the function `store_code` which give 
 ```
 git clone https://github.com/SiwonP/huffman_C && cd huffman_C && make
 ```
+
+## Usage
+
+### Command for the compression 
+
+```
+./huffman -c <input> <archive>
+```
+
+### Command for the decompression
+
+```
+./huffman -d <archive> <output>
+```
