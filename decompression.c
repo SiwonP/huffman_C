@@ -10,39 +10,41 @@ void decompress(char *inputName, char *outputName) {
     FILE *input = fopen(inputName, "r");
     FILE *output = fopen(outputName, "w");
     char c;
+    Tree *tree;
 
-    /*
-    while ((c = fgetc(input)) != EOF) {
-        if (c == 2) {
-            //printf("true\n");
-            printf("%d\n", c);
-        } else {
-            printf("%d\n", c);
-            //printf("false\n");
-        }
-    }
-    */
+    Entry *dic[128];
 
-    int tab[128];
+    int tab[128] = {0};
     read_frequences(input, tab);
 
     for (int i = 0; i < 128; i++) {
 
-        printf("%c : ", i);
-        printf("%d\n", tab[i]);
+        //printf("%c : ", i);
+        //printf("%d\n", tab[i]);
     }
+
+    tree = build_tree(tab, 128);
+    
+    for (int i = 0; i < 128; i++) {
+        Entry *entry = malloc(sizeof(Entry));
+        dic[i] = entry;
+    }
+
+    store_code(tree, dic, 0, 0);
 
 }          
 
 void read_frequences(FILE *input, int *tab) {
 
     int c = 0;
-    int i;
+    unsigned char i;
 
     while (c != 2) {
         fread(&c, 1, 1, input);
         fread(&i, 1, 1, input);
 
-        tab[c] = i;
+        if (c != 2) {
+            tab[c] = i;
+        }
     }
 }

@@ -18,7 +18,7 @@ struct TreeArray {
     Tree *nodes[128];
 };
 
-Tree *init_tree(int, char);
+Tree *init_tree(int, int);
 
 void destroy_tree(Tree*);
 

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /*This function takes a weight w and a char e and return a tree leaf out of them*/
-Tree *init_tree(int w, char e) {
+Tree *init_tree(int w, int e) {
     Tree *node = malloc(sizeof(Tree));
     node->el = e;
     node->weight = w;
@@ -100,6 +100,7 @@ Tree *build_tree(int *tab, int size) {
 
     while (array->counter > 1) {
         Tree *node = malloc(sizeof(Tree));
+        node->bits = 0;
         node->left = pick_node(array);
         node->right = pick_node(array);
         node->weight = node->left->weight + node->right->weight;
