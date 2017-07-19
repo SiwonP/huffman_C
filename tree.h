@@ -33,4 +33,6 @@ TreeArray *init_tree_array(void);
 Tree *pick_node(TreeArray*);
 
 Tree *build_tree(int*, int);
+
+Tree *search_in_tree(Tree*, unsigned int, int, int);
 #endif

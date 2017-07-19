@@ -110,4 +110,29 @@ Tree *build_tree(int *tab, int size) {
     return tree;
 }
     
+Tree *search_in_tree(Tree *tree, unsigned int buffer, int bufferSize, int level) {
 
+    /*if there's not enough bits to make a know character*/
+    if (level > bufferSize) {
+        return NULL;
+    }
+
+    /*if we end up on a leaf, we return the char decoded*/
+    if (tree->left == NULL && tree->right == NULL) {
+        return tree;
+    }
+
+    /*If the first bit read is a 0 we go left*/
+    if (tree->left != NULL && !(buffer>>(bufferSize - level - 1)&1)) {
+        return search_in_tree(tree->left, buffer, bufferSize, level+1);
+    }
+
+    /*if the first bit read is a 1 we go right*/
+    if (tree->right != NULL && (buffer>>(bufferSize - level - 1)&1)) {
+        return search_in_tree(tree->right, buffer, bufferSize, level+1);
+    }
+
+    return NULL;
+
+
+}

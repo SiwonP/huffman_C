@@ -72,6 +72,13 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
         buffer = buffer|dic[c]->code;
         bufferSize = bufferSize + dic[c]->bits;
 
+        /* As long as the buffer is more than a byte long
+         * we reduce the bufferSize by 8 (lentgh of a byte).
+         * Then we right bit shift this buffer bufferSize times
+         * and stored the result in the code variable, so that 
+         * the code variable now contains the first
+         * byte long piece of information
+         * After that we write this byte in the new archive file */
         while (bufferSize > 7) {
             bufferSize = bufferSize - 8;
             code = buffer>>bufferSize;
