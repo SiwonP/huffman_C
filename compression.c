@@ -6,12 +6,15 @@
 #include "dictionary.h"
 
 void compress(char *inputName, char *outputName) {
+    printf("compressing ...\n");
     FILE *input = fopen(inputName, "r");
     FILE *output = fopen(outputName, "w");
     int tab[128] = {0};
     Entry *dic[128];
+    int inputBytes;
+    int outputBytes;
 
-    count_frequences(input, tab);
+    inputBytes = count_frequences(input, tab);
 
     Tree *tree = build_tree(tab, 128);
     for (int i = 0; i < 128; i++) {
@@ -22,10 +25,14 @@ void compress(char *inputName, char *outputName) {
 
     rewind(input);
 
-    encode(input, output, tab, dic);
+    outputBytes = encode(input, output, tab, dic);
 
     fclose(input);
     fclose(output);
+
+    printf("done\n");
+
+    printf("compression rate : %f\n", (double)outputBytes/inputBytes);
 }
 
 
@@ -47,7 +54,7 @@ void store_code(Tree *node, Entry **dic, int codage, int level) {
     }
 }
 
-void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
+int encode(FILE *file, FILE *output, int *tab, Entry **dic) {
     unsigned int buffer = 0;
     unsigned char code = 0;
     int bufferSize = 0;
@@ -67,7 +74,7 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
     }
 
     char delimiter = 2; 
-    
+
     fwrite(&delimiter, 1, 1, output);
     byte++;
 
@@ -90,6 +97,6 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
             byte++;
         }
     }
-    printf("%d\n", byte);
+    return byte;
 }
 

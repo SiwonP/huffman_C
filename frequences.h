@@ -5,6 +5,6 @@
 #include <stdlib.h>
 #include "tree.h"
 
-void count_frequences(FILE*, int*);
+int count_frequences(FILE*, int*);
 
 #endif
