@@ -52,6 +52,7 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
     unsigned char code = 0;
     int bufferSize = 0;
     int c;
+    int byte = 0;
 
     for (int i = 0; i < 128; i++) {
 
@@ -59,14 +60,17 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
             //printf("%d : %d\n",i, tab[i]);
             //fputc(dic[i]->code, output);
             fwrite(&i, 1, 1, output);
+            byte++;
             fwrite(&tab[i], 1, 1, output);
+            byte++;
         }
     }
 
     char delimiter = 2; 
     
     fwrite(&delimiter, 1, 1, output);
-    //fputc(delimiter, output);
+    byte++;
+
     while((c = fgetc(file)) != EOF) {
         buffer = buffer<<dic[c]->bits;
         buffer = buffer|dic[c]->code;
@@ -83,7 +87,9 @@ void encode(FILE *file, FILE *output, int *tab, Entry **dic) {
             bufferSize = bufferSize - 8;
             code = buffer>>bufferSize;
             fputc(code, output);
+            byte++;
         }
     }
+    printf("%d\n", byte);
 }
 
