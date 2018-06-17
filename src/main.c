@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 #include "tree.h"
 #include "frequences.h"
@@ -14,8 +15,6 @@ int main(int argc, char *argv[]) {
     } else {
         printf("help");
     }
-
-
     return 1;
 }
 

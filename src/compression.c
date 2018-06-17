@@ -6,7 +6,7 @@
 #include "dictionary.h"
 
 void compress(char *inputName, char *outputName) {
-    printf("compressing ...\n");
+    printf("Compressing ...\n");
     FILE *input = fopen(inputName, "r");
     FILE *output = fopen(outputName, "w");
     int tab[128] = {0};
@@ -30,9 +30,9 @@ void compress(char *inputName, char *outputName) {
     fclose(input);
     fclose(output);
 
-    printf("done\n");
+    printf("Done\n");
 
-    printf("compression rate : %f\n", (double)outputBytes/inputBytes);
+    printf("Compression rate : %f\n", (double)outputBytes/inputBytes);
 }
 
 

@@ -12,4 +12,3 @@ int count_frequences(FILE *file, int *tab){
     }
     return byte;
 }
-

@@ -1,0 +1,9 @@
+add_executable(
+    huffman
+    compression.c
+    decompression.c
+    dictionary.c
+    frequences.c
+    main.c
+    tree.c
+    )

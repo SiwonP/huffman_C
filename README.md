@@ -75,3 +75,11 @@ make
 ```
 ./huffman -d <archive> <output>
 ```
+
+## TODO
+
+- Make a proper documentation 
+- Make unit tests
+- Fix the bug whether it be on the compression or the decompression side
+- Use a proper argument parser
+- Make a proper README
